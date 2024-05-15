@@ -11,7 +11,7 @@ def github_repo():
     if st.session_state["selected_model"] is not None:
         st.text_input(
             "Select a GitHub.com repo",
-            placeholder="jonfairbanks/local-rag",
+            placeholder="hududed/mm-rag",
             key="github_repo",
         )
 
@@ -27,16 +27,18 @@ def github_repo():
             if repo_processed is True:
                 # Initiate the RAG pipeline, providing documents to be saved on disk if necessary
                 error = rag.rag_pipeline()
-                
+
                 if error is not None:
                     st.exception(error)
                 else:
-                    st.write("Your files are ready. Let's chat! 😎") # TODO: This should be a button.
+                    st.write(
+                        "Your files are ready. Let's chat! 😎"
+                    )  # TODO: This should be a button.
 
     else:
         st.text_input(
             "Select a GitHub.com repo",
-            placeholder="jonfairbanks/local-rag",
+            placeholder="hududed/mm-rag",
             disabled=True,
         )
         st.button(
